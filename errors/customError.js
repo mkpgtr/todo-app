@@ -13,8 +13,20 @@ class CustomAPIError extends Error {
     }
   }
 
+  class UnauthenticatedError extends CustomAPIError {
+    constructor(message) {
+      super(message, 401)
+    }
+  }
+
+  class InvalidCredentialsError extends CustomAPIError {
+    constructor(message) {
+      super(message, 401)
+    }
+  }
+
   
 
  
   
-  module.exports = {CustomAPIError,InvalidInputError }
+  module.exports = {CustomAPIError,InvalidInputError,UnauthenticatedError,InvalidCredentialsError }

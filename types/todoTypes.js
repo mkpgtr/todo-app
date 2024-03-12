@@ -6,8 +6,11 @@ const isValidMongoId = (value) => {
 
 
 const createTodo = zod.object({
-    title: zod.string(),
-    description: zod.string()
+    title: zod.string().min(8, { message: "title must be atleast 8 characters long" }),
+    description: zod.string().min(16, { message: "desc  ription must be atleast 16 characters long" }),
+    createdBy: zod.string().refine(value => {
+        return isValidMongoId(value)
+    }, { message: "invalid mongodb id " }),
 });
 
 const updateTodo = zod.object({

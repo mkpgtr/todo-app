@@ -1,7 +1,11 @@
-const { CustomAPIError } = require('../errors/customError.js')
+const { CustomAPIError, InvalidInputError } = require('../errors/customError.js')
 const errorHandlerMiddleware = (err, req, res, next) => {
 
+  console.log(err)
+  
   if (err instanceof CustomAPIError) {
+
+
     return res.status(err.statusCode).json({ msg: err.message })
   }
 

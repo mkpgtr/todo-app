@@ -9,17 +9,20 @@ schema for the todo model
 const todoSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: true,
         unique: true
     },
     description: {
         type: String,
-        required: true,
         unique: true
     },
     completed: {
         type: Boolean,
         default: false
+    },
+    createdBy : {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    
     }
 });
 
